@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
     private var playstop = false
 
-    private lateinit var cursordata: Cursor
+    private var cursordata: Cursor? = null
 
     private var mTimer: Timer? = null
 
@@ -199,7 +199,8 @@ class MainActivity : AppCompatActivity() {
         imageView.setImageURI(null)
         imageView.setImageDrawable(null)
         Log.d("test", "onStop")
-        cursordata.close()
+        if (cursordata != null){
+        cursordata!!.close()}
         firsttime = true
         super.onStop()
     }
@@ -213,7 +214,7 @@ class MainActivity : AppCompatActivity() {
                 mHandler.post {
                     imageView.setImageDrawable(null)
                     imageView.setImageURI(null)
-                    next(cursordata)
+                    next(cursordata!!)
                 }
             }
         }, 2000, 2000)
