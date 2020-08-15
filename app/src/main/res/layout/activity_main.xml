@@ -52,7 +52,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text="再生/一時停止"
+                    android:text="自動再生"
                     android:textColor="@android:color/black"
                     android:textSize="10sp" />
 
