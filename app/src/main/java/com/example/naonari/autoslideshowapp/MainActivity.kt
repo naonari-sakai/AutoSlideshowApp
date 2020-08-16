@@ -193,16 +193,24 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
     //カーソルをonStopのタイミングで閉じる
     override fun onStop() {
         imageView.setImageURI(null)
         imageView.setImageDrawable(null)
         Log.d("test", "onStop")
-        if (cursordata != null){
-        cursordata!!.close()}
-        firsttime = true
-        super.onStop()
+        if (playstop == true) {
+            playstop = false
+            stopplay.text = "自動再生"
+            if (mTimer != null) {
+                mTimer!!.cancel()
+                mTimer = null
+            }
+            if (cursordata != null) {
+                cursordata!!.close()
+            }
+            firsttime = true
+            super.onStop()
+        }
     }
 
     //2秒ごとに処理をするタイマー
